@@ -1,0 +1,98 @@
+.header {
+  margin-bottom: 24px;
+}
+
+.footer {
+  margin-top: 24px;
+}
+
+.title {
+  font-size: clamp(4.2rem, 8vw, 8.4rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.03;
+  color: #0a0a0a;
+  margin: 0 0 16px;
+}
+
+.buyButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #111;
+  border: 1px solid #111;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.buyPrice {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.buyButton:hover {
+  background: #333;
+  border-color: #333;
+  color: #fff;
+}
+
+.back {
+  font-size: 14px;
+  margin: 16px 0;
+}
+
+.back a {
+  color: #444;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.pairs {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.pairRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+@media (max-width: 720px) {
+  .pairRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.figure {
+  margin: 0;
+}
+
+.label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.imageWrap {
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: top;
+}

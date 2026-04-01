@@ -1,0 +1,22 @@
+{
+  "nav": {
+    "overview": "Overview",
+    "presets": "Presets",
+    "about": "About"
+  },
+  "presets": {
+    "section_label": "Presets",
+    "back": "← All preset packs",
+    "buy": "Buy",
+    "before": "Before",
+    "after": "After"
+  },
+  "about": {
+    "heading": "About",
+    "bio1": "This portfolio presents editorial and portrait photography projects with a focus on story, composition, and natural light.",
+    "bio2": "For commissions and collaborations, please reach out through the contact channels below.",
+    "contact_heading": "Contact",
+    "cta": "LET'S WORK\nTOGETHER"
+  },
+  "ticker": "ALL PRESETS MADE WITH LOVE. "
+}

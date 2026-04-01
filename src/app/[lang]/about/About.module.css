@@ -1,0 +1,79 @@
+.page {
+  position: relative;
+  min-height: calc(100vh - 48px);
+  padding-bottom: clamp(140px, 22vh, 280px);
+}
+
+.intro {
+  max-width: 700px;
+}
+
+.intro h1, .contactsTitle {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.intro p {
+  line-height: 1.6;
+  margin-bottom: 12px;
+  color: #222;
+}
+
+.intro p:last-of-type {
+  margin-bottom: 0;
+}
+
+.contacts {
+  margin-top: 48px;
+  max-width: 420px;
+}
+
+.contactList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contactList a {
+  font-size: 16px;
+  color: #111;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.contactList a:hover {
+  color: #000;
+}
+
+.mainCta {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  max-width: min(98%, 1000px);
+  font-size: clamp(2.5rem, 10vw, 6.5rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 0.92;
+  text-align: right;
+  color: #0a0a0a;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 900px) {
+  .mainCta {
+    position: relative;
+    margin-top: 64px;
+    text-align: left;
+    max-width: 100%;
+  }
+
+  .page {
+    min-height: auto;
+    padding-bottom: 24px;
+  }
+}

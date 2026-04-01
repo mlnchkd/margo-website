@@ -1,0 +1,35 @@
+.masonry {
+  columns: 4 220px;
+  column-gap: 8px;
+}
+
+.item {
+  break-inside: avoid;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.frame {
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  height: calc(100% + 36px);
+  margin-top: -18px;
+  will-change: transform;
+}
+
+@media (max-width: 1200px) {
+  .masonry {
+    columns: 3 220px;
+  }
+}
+
+@media (max-width: 800px) {
+  .masonry {
+    columns: 2 180px;
+  }
+}

@@ -1,0 +1,24 @@
+.masonry {
+  margin-top: 16px;
+  columns: 4 220px;
+  column-gap: 8px;
+}
+
+.item {
+  break-inside: avoid;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.frame {
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: calc(100% + 36px);
+  margin-top: -18px;
+  display: block;
+  object-fit: cover;
+  will-change: transform;
+}

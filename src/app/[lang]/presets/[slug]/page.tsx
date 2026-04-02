@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -8,6 +7,7 @@ import {
   presetPacks,
 } from "@/lib/presets";
 import { getDictionary, hasLocale } from "../../dictionaries";
+import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 import styles from "@/app/[lang]/presets/[slug]/pack.module.css";
 
 type Props = {
@@ -49,32 +49,12 @@ export default async function PresetPackPage({ params }: Props) {
       <div className={styles.pairs}>
         {pairs.map((pair) => (
           <article key={pair.index} className={styles.pair}>
-            <div className={styles.pairRow}>
-              <figure className={styles.figure}>
-                <span className={styles.label}>{t.before}</span>
-                <div className={styles.imageWrap}>
-                  <Image
-                    src={getPresetPairImageUrl(pack.slug, pair.index, "before", 900, 650)}
-                    alt={`${t.before} — ${pack.title} ${pair.index + 1}`}
-                    width={900}
-                    height={650}
-                    className={styles.image}
-                  />
-                </div>
-              </figure>
-              <figure className={styles.figure}>
-                <span className={styles.label}>{t.after}</span>
-                <div className={styles.imageWrap}>
-                  <Image
-                    src={getPresetPairImageUrl(pack.slug, pair.index, "after", 900, 650)}
-                    alt={`${t.after} — ${pack.title} ${pair.index + 1}`}
-                    width={900}
-                    height={650}
-                    className={styles.image}
-                  />
-                </div>
-              </figure>
-            </div>
+            <BeforeAfterSlider
+              beforeSrc={getPresetPairImageUrl(pack.slug, pair.index, "before", 900, 650)}
+              afterSrc={getPresetPairImageUrl(pack.slug, pair.index, "after", 900, 650)}
+              beforeLabel={t.before}
+              afterLabel={t.after}
+            />
           </article>
         ))}
       </div>

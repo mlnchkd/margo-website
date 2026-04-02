@@ -1,0 +1,78 @@
+.container {
+  position: relative;
+  aspect-ratio: 900 / 650;
+  overflow: hidden;
+  background: #f0f0f0;
+  cursor: col-resize;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+}
+
+.image {
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* Labels */
+.label {
+  position: absolute;
+  top: 14px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.38);
+  padding: 4px 9px;
+  pointer-events: none;
+  z-index: 5;
+  backdrop-filter: blur(4px);
+}
+
+.labelBefore {
+  left: 14px;
+}
+
+.labelAfter {
+  right: 14px;
+}
+
+/* Handle */
+.handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.handleLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: #fff;
+  transform: translateX(-50%);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+}
+
+.handleCircle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

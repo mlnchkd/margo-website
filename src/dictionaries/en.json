@@ -18,5 +18,20 @@
     "contact_heading": "Contact",
     "cta": "LET'S WORK\nTOGETHER"
   },
-  "ticker": "ALL PRESETS MADE WITH LOVE. "
+  "ticker": "ALL PRESETS MADE WITH LOVE. ",
+  "checkout": {
+    "loading": "Loading payment form…",
+    "error": "Payment form could not be loaded. Please try again.",
+    "back": "← Back"
+  },
+  "download": {
+    "verifying": "Verifying your payment…",
+    "error_payment": "Payment not confirmed. Please complete your purchase first.",
+    "error_generic": "Something went wrong. Please try again.",
+    "ready_title": "Your preset pack is ready!",
+    "warning": "This download link is valid for 15 minutes only.",
+    "download_button": "Download Presets",
+    "back": "← All presets",
+    "expired": "Your download link has expired. Please go back and download again."
+  }
 }

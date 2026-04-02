@@ -1,9 +1,12 @@
+/* ─────────────────────────────────────────
+   DESKTOP SIDEBAR
+───────────────────────────────────────── */
 .sidebar {
   position: fixed;
   inset: 0 auto 0 0;
   width: var(--sidebar-width);
   background: #ffffff;
-  z-index: 20;
+  z-index: 40;
   padding: 26px 20px 26px 26px;
   display: flex;
   flex-direction: column;
@@ -15,7 +18,19 @@
   top: 34px;
 }
 
-.logo {
+.panelTop {
+  display: none;
+}
+
+.mobilePanelLogo {
+  display: none;
+}
+
+.closeBtn {
+  display: none;
+}
+
+.desktopLogo {
   font-size: 36px;
   line-height: 1;
   font-weight: 800;
@@ -62,8 +77,16 @@
   height: 20px;
 }
 
-.photoshoots {
-  margin-top: 2px;
+.subSection {
+  margin-top: 20px;
+}
+
+.divider {
+  display: none;
+}
+
+.subLabel {
+  display: none;
 }
 
 .shootList {
@@ -73,11 +96,9 @@
   gap: 2px;
 }
 
-.shootName {
-  padding: 3px 0;
-}
-
 .shootLink {
+  display: block;
+  padding: 3px 0;
   color: #222;
   font-size: 15px;
   line-height: 1.25;
@@ -88,17 +109,12 @@
   text-underline-offset: 2px;
 }
 
-.langSpacer {
-  flex: 1;
-}
-
 .langSwitch {
   display: flex;
   align-items: center;
   gap: 5px;
-  margin-top: 20px;
+  margin-top: auto;
   padding-top: 16px;
-  /*border-top: 1px solid #e8e8e8;*/
 }
 
 .langActive {
@@ -113,7 +129,6 @@
   font-weight: 400;
   letter-spacing: 0.08em;
   color: #888;
-  text-decoration: none;
   transition: color 0.15s;
 }
 
@@ -124,4 +139,230 @@
 .langDivider {
   font-size: 12px;
   color: #ccc;
+}
+
+/* ─────────────────────────────────────────
+   MOBILE HEADER (burger bar)
+───────────────────────────────────────── */
+.mobileHeader {
+  display: none;
+}
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.burgerLine {
+  display: block;
+  height: 1.5px;
+  background: #111;
+}
+
+/* ─────────────────────────────────────────
+   MOBILE — full-screen panel
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Panel */
+  .sidebar {
+    inset: 0;
+    width: 100%;
+    padding: 0;
+    z-index: 150;
+    transform: translateY(-100%);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  :global(html.has-ticker) .sidebar {
+    top: 0;
+  }
+
+  .sidebarOpen {
+    transform: translateY(0);
+  }
+
+  .desktopLogo {
+    display: none;
+  }
+
+  /* Top row inside panel */
+  .panelTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    flex-shrink: 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .mobilePanelLogo {
+    display: block;
+    font-size: 22px;
+    letter-spacing: -0.06em;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .closeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #111;
+    line-height: 1;
+  }
+
+  /* Animated items keyframe */
+  @keyframes itemIn {
+    from {
+      opacity: 0;
+      transform: translateY(22px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Main nav */
+  .nav {
+    padding: 32px 24px 0;
+    gap: 0;
+  }
+
+  .link {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: #0a0a0a;
+    padding: 10px 0;
+    opacity: 0;
+  }
+
+  .sidebarOpen .link {
+    animation: itemIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .link.active {
+    text-decoration: none;
+    color: #888;
+  }
+
+  /* Sub section */
+  .subSection {
+    padding: 0 24px;
+    margin-top: 28px;
+    opacity: 0;
+  }
+
+  .sidebarOpen .subSection {
+    animation: itemIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .divider {
+    display: block;
+    height: 1px;
+    background: #e8e8e8;
+    margin-bottom: 16px;
+  }
+
+  .subLabel {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: #bbb;
+    margin-bottom: 12px;
+  }
+
+  .shootList {
+    gap: 0;
+  }
+
+  .shootLink {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 0;
+    color: #222;
+    border-bottom: 1px solid #f4f4f4;
+    opacity: 0;
+  }
+
+  .sidebarOpen .shootLink {
+    animation: itemIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .shootLink.active {
+    color: #aaa;
+    text-decoration: none;
+  }
+
+  /* Lang */
+  .langSwitch {
+    margin-top: auto;
+    padding: 28px 24px;
+    border-top: 1px solid #f0f0f0;
+    opacity: 0;
+  }
+
+  .sidebarOpen .langSwitch {
+    animation: itemIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .langActive {
+    font-size: 14px;
+  }
+
+  .langInactive {
+    font-size: 14px;
+  }
+
+  /* Burger header */
+  .mobileHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 52px;
+    background: #fff;
+    padding: 0 20px;
+    z-index: 130;
+    border-bottom: 1px solid #f0f0f0;
+    transition: top 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  :global(html.has-ticker) .mobileHeader {
+    top: 34px;
+  }
+
+  .mobileLogo {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    line-height: 1;
+  }
+
+  /* Hide desktop logo/section label inside panel */
+  .sectionLabel {
+    display: none;
+  }
 }

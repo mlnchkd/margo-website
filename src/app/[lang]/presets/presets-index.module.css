@@ -93,3 +93,23 @@
 .cardLink:hover .arrow {
   transform: translateX(4px);
 }
+
+@media (max-width: 768px) {
+  .page {
+    height: auto;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    flex: none;
+  }
+
+  .imageWrap {
+    height: 60vw;
+    flex: none;
+  }
+
+  .cardTitle {
+    font-size: 1.2rem;
+  }
+}

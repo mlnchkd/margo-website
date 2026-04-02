@@ -18,6 +18,8 @@ export default async function AboutPage({ params }: Props) {
 
   return (
     <div className={styles.page}>
+      <section>
+
       <div className={styles.intro}>
         <h1>{t.heading}</h1>
         <p>{t.bio1}</p>
@@ -44,12 +46,18 @@ export default async function AboutPage({ params }: Props) {
           </li>
         </ul>
       </section>
+      </section>
+
 
       <p className={styles.mainCta}>
         {t.cta.split("\n").map((line, i) => (
-          <span key={i}>
-            {line}
-            <br />
+          <span key={i} className={styles.ctaLine}>
+            <span
+              className={styles.ctaLineInner}
+              style={{ animationDelay: `${0.1 + i * 0.14}s` }}
+            >
+              {line}
+            </span>
           </span>
         ))}
       </p>

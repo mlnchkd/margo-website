@@ -4,6 +4,18 @@
   column-gap: 8px;
 }
 
+@media (max-width: 768px) {
+  .masonry {
+    columns: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .masonry {
+    columns: 1;
+  }
+}
+
 .item {
   break-inside: avoid;
   display: block;

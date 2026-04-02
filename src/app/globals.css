@@ -48,3 +48,14 @@ a {
 html.has-ticker .content-area {
   padding-top: calc(34px + 24px);
 }
+
+@media (max-width: 768px) {
+  .content-area {
+    margin-left: 0;
+    padding: 68px 16px 24px;
+  }
+
+  html.has-ticker .content-area {
+    padding-top: calc(34px + 52px + 16px);
+  }
+}

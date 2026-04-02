@@ -57,11 +57,33 @@
   font-size: clamp(2.5rem, 10vw, 6.5rem);
   font-weight: 700;
   letter-spacing: 0.03em;
-  line-height: 0.92;
+  line-height: 0.95;
   text-align: right;
   color: #0a0a0a;
   pointer-events: none;
   user-select: none;
+}
+
+.ctaLine {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em; /* prevent descender clip */
+}
+
+.ctaLineInner {
+  display: block;
+  animation: ctaReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes ctaReveal {
+  from {
+    transform: translateY(108%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @media (max-width: 900px) {
@@ -74,6 +96,18 @@
 
   .page {
     min-height: auto;
+    height: calc(100vh - 96px);
     padding-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainCta {
+    font-size: clamp(3.2rem, 8vh, 4.5rem);
+    white-space: wrap;
+    margin-top: 48px;
   }
 }

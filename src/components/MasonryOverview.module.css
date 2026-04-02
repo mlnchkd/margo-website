@@ -33,3 +33,9 @@
     columns: 2 180px;
   }
 }
+
+@media (max-width: 480px) {
+  .masonry {
+    columns: 1;
+  }
+}

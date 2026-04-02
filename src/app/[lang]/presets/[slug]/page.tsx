@@ -64,7 +64,7 @@ export default async function PresetPackPage({ params }: Props) {
           <span>{t.buy}</span>
           <span className={styles.buyPrice}>{pack.priceDisplay}</span>
         </Link>
-        <h1 className={styles.title}>{pack.title}</h1>
+        <p className={styles.title}>{pack.title}</p>
       </div>
     </div>
   );

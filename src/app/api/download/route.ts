@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 import { createHmac, timingSafeEqual } from "crypto";
-import { readFile } from "fs/promises";
+import { createReadStream, existsSync } from "fs";
 import path from "path";
 import { presetPacks } from "@/lib/presets";
 
@@ -38,16 +38,24 @@ export async function GET(req: NextRequest) {
 
   const filePath = path.join(process.cwd(), "private", "presets", pack.fileBasename);
 
-  try {
-    const fileBuffer = await readFile(filePath);
-    return new Response(fileBuffer, {
-      headers: {
-        "Content-Type": "application/zip",
-        "Content-Disposition": `attachment; filename="${pack.fileBasename}"`,
-        "Cache-Control": "no-store, no-cache",
-      },
-    });
-  } catch {
+  if (!existsSync(filePath)) {
     return new Response("File not found", { status: 404 });
   }
+
+  const stream = createReadStream(filePath);
+  const readableStream = new ReadableStream({
+    start(controller) {
+      stream.on("data", (chunk) => controller.enqueue(chunk));
+      stream.on("end", () => controller.close());
+      stream.on("error", (err) => controller.error(err));
+    },
+  });
+
+  return new Response(readableStream, {
+    headers: {
+      "Content-Type": "application/zip",
+      "Content-Disposition": `attachment; filename="${pack.fileBasename}"`,
+      "Cache-Control": "no-store, no-cache",
+    },
+  });
 }

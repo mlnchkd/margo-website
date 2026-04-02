@@ -43,3 +43,6 @@ next-env.d.ts
 # local image assets (uploaded to Cloudinary)
 imagesToBucket/
 .worktrees
+
+# preset zip files (large binaries, distributed separately)
+private/presets/*.zip

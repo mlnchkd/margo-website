@@ -9,11 +9,12 @@ export async function POST(req: NextRequest) {
     return Response.json({ error: "Unknown preset" }, { status: 400 });
   }
 
-  if (!lang || typeof lang !== "string") {
-    return Response.json({ error: "Missing lang" }, { status: 400 });
+  const ALLOWED_LOCALES = ["en", "uk"];
+  if (!lang || !ALLOWED_LOCALES.includes(lang)) {
+    return Response.json({ error: "Invalid lang" }, { status: 400 });
   }
 
-  const redirectUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${lang}/download?preset=${preset}`;
+  const redirectUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${encodeURIComponent(lang)}/download?preset=${encodeURIComponent(preset)}`;
 
   const monoRes = await fetch(
     `${process.env.MONOBANK_BASE_URL}/api/merchant/invoice/create`,

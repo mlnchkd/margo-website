@@ -40,10 +40,10 @@ export default async function PresetPackPage({ params }: Props) {
 
       <div className={styles.header}>
         <h1 className={styles.title}>{pack.title}</h1>
-        <a href={pack.buyUrl} className={styles.buyButton} target="_blank" rel="noopener noreferrer">
+        <Link href={`/${lang}/checkout?preset=${pack.slug}`} className={styles.buyButton}>
           <span>{t.buy}</span>
-          <span className={styles.buyPrice}>{pack.price}</span>
-        </a>
+          <span className={styles.buyPrice}>{pack.priceDisplay}</span>
+        </Link>
       </div>
 
       <div className={styles.pairs}>
@@ -59,14 +59,13 @@ export default async function PresetPackPage({ params }: Props) {
         ))}
       </div>
 
-        <div className={styles.footer}>
-            <a href={pack.buyUrl} className={styles.buyButton} target="_blank" rel="noopener noreferrer">
-                <span>{t.buy}</span>
-                <span className={styles.buyPrice}>{pack.price}</span>
-            </a>
-
-            <h1 className={styles.title}>{pack.title}</h1>
-        </div>
+      <div className={styles.footer}>
+        <Link href={`/${lang}/checkout?preset=${pack.slug}`} className={styles.buyButton}>
+          <span>{t.buy}</span>
+          <span className={styles.buyPrice}>{pack.priceDisplay}</span>
+        </Link>
+        <h1 className={styles.title}>{pack.title}</h1>
+      </div>
     </div>
   );
 }

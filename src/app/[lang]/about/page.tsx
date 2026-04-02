@@ -2,10 +2,10 @@ import { notFound } from "next/navigation";
 import { getDictionary, hasLocale } from "../dictionaries";
 import styles from "@/app/[lang]/about/About.module.css";
 
-const TELEGRAM_URL = "https://t.me/yourusername";
-const INSTAGRAM_URL = "https://instagram.com/yourusername";
-const PHONE_DISPLAY = "+1 (555) 000-0000";
-const PHONE_TEL = "+15550000000";
+const TELEGRAM_URL = "https://t.me/margophotoo1";
+const INSTAGRAM_URL = "https://www.instagram.com/margophotoo/";
+const PHONE_DISPLAY = "+38 (095) 941-21-15";
+const PHONE_TEL = "+380959412115";
 
 type Props = { params: Promise<{ lang: string }> };
 

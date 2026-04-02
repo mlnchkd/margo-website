@@ -42,3 +42,4 @@ next-env.d.ts
 
 # local image assets (uploaded to Cloudinary)
 imagesToBucket/
+.worktrees

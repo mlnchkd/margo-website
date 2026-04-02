@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { getStableImageUrl, type MixedPortfolioImage } from "@/lib/portfolio";
+import { getImageUrl, type MixedPortfolioImage } from "@/lib/portfolio";
 import styles from "./MasonryOverview.module.css";
 
 type MasonryOverviewProps = {
@@ -43,13 +43,13 @@ export function MasonryOverview({ lang, images }: MasonryOverviewProps) {
 
         return (
           <Link
-            key={`${image.projectSlug}-${image.id}-${idx}`}
+            key={`${image.projectSlug}-${idx}`}
             href={`/${lang}/projects/${image.projectSlug}/photo/${image.imageIndex}`}
             className={styles.item}
           >
             <div className={styles.frame} style={{ height: `${height}px` }}>
               <Image
-                src={getStableImageUrl(image.projectSlug, image.id, 900, 1200)}
+                src={getImageUrl(image.url, 900)}
                 alt={image.caption}
                 width={900}
                 height={1200}

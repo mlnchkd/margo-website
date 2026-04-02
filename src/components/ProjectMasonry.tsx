@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getStableImageUrl, type PortfolioImage } from "@/lib/portfolio";
+import { getImageUrl, type PortfolioImage } from "@/lib/portfolio";
 import styles from "./ProjectMasonry.module.css";
 
 type ProjectMasonryProps = {
@@ -42,10 +42,10 @@ export function ProjectMasonry({ lang, projectSlug, images }: ProjectMasonryProp
         const innerOffset = Math.sin(scrollY * 0.003 + index * 0.7) * 14;
 
         return (
-          <Link key={image.id} href={`/${lang}/projects/${projectSlug}/photo/${index}`} className={styles.item}>
+          <Link key={index} href={`/${lang}/projects/${projectSlug}/photo/${index}`} className={styles.item}>
             <div className={styles.frame} style={{ height: `${height}px` }}>
               <Image
-                src={getStableImageUrl(projectSlug, image.id, 900, 1200)}
+                src={getImageUrl(image.url, 900)}
                 alt={image.caption}
                 width={900}
                 height={1200}

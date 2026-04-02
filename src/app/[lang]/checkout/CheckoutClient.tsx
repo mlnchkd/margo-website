@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import type { PresetPack } from "@/lib/presets";
 import type { Dictionary } from "../dictionaries";
 import styles from "./checkout.module.css";
@@ -39,23 +38,19 @@ export function CheckoutClient({ lang, pack, dict }: Props) {
   }, []);
 
   return (
-    <div className={styles.page}>
-      <p className={styles.back}>
-        <Link href={`/${lang}/presets/${pack.slug}`}>{dict.back}</Link>
-      </p>
+    <div className={styles.overlay}>
+      <div className={styles.logo}>MARGOPHOTOO</div>
 
-      <h1 className={styles.title}>{pack.title}</h1>
+      <div className={styles.main}>
+        {invoice.status === "loading" && (
+          <div className={styles.state}>{dict.loading}</div>
+        )}
 
-      {invoice.status === "loading" && (
-        <div className={styles.state}>{dict.loading}</div>
-      )}
+        {invoice.status === "error" && (
+          <div className={styles.stateError}>{dict.error}</div>
+        )}
 
-      {invoice.status === "error" && (
-        <div className={styles.stateError}>{dict.error}</div>
-      )}
-
-      {invoice.status === "ready" && (
-        <div className={styles.frameWrap}>
+        {invoice.status === "ready" && (
           <iframe
             id="payFrame"
             title="monopay"
@@ -65,8 +60,8 @@ export function CheckoutClient({ lang, pack, dict }: Props) {
             height="576"
             style={{ borderRadius: "24px", border: "none" }}
           />
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

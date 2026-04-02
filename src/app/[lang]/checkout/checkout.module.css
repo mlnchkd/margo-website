@@ -1,42 +1,37 @@
-.page {
-  padding: 24px 0;
-  max-width: 640px;
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 9999;
 }
 
-.back {
-  font-size: 14px;
-  margin: 0 0 16px;
-}
-
-.back a {
-  color: #444;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+.logo {
+  padding: 32px 0 0;
+  font-size: 18px;
   font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 1.03;
+  letter-spacing: 0.04em;
   color: #0a0a0a;
-  margin: 0 0 32px;
+  user-select: none;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 24px;
 }
 
 .state {
   font-size: 15px;
   color: #444;
-  padding: 48px 0;
 }
 
 .stateError {
   font-size: 15px;
   color: #c00;
-  padding: 48px 0;
-}
-
-.frameWrap {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
 }

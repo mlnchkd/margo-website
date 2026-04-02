@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
     return Response.json({ error: "Invalid lang" }, { status: 400 });
   }
 
-  const redirectUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${encodeURIComponent(lang)}/download?preset=${encodeURIComponent(preset)}`;
+  const redirectUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${encodeURIComponent(lang)}/payment-callback?preset=${encodeURIComponent(preset)}`;
 
   const monoRes = await fetch(
     `${process.env.MONOBANK_BASE_URL}/api/merchant/invoice/create`,

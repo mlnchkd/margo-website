@@ -14,7 +14,11 @@ export async function POST(req: NextRequest) {
     return Response.json({ error: "Invalid lang" }, { status: 400 });
   }
 
-  const redirectUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${encodeURIComponent(lang)}/payment-callback?preset=${encodeURIComponent(preset)}`;
+  const base = process.env.NEXT_PUBLIC_BASE_URL;
+  const encodedLang = encodeURIComponent(lang);
+  const encodedPreset = encodeURIComponent(preset);
+  const successUrl = `${base}/${encodedLang}/payment-callback?preset=${encodedPreset}`;
+  const failUrl = `${base}/${encodedLang}/presets/${encodedPreset}`;
 
   const monoRes = await fetch(
     `${process.env.MONOBANK_BASE_URL}/api/merchant/invoice/create`,
@@ -32,7 +36,8 @@ export async function POST(req: NextRequest) {
           destination: `${pack.title} preset pack`,
         },
         displayType: "iframe",
-        redirectUrl,
+        successUrl,
+        failUrl,
       }),
     }
   );

@@ -15,9 +15,14 @@ export type MixedPortfolioImage = PortfolioImage & {
   imageIndex: number;
 };
 
-/** Add Cloudinary on-the-fly optimisation to any uploaded URL */
+/** Optimised delivery for thumbnails and grids */
 export function getImageUrl(url: string, width: number): string {
-  return url.replace("/upload/", `/upload/w_${width},f_auto,q_auto/`);
+  return url.replace("/upload/", `/upload/w_${width},c_limit,f_auto,q_auto:best,fl_progressive/`);
+}
+
+/** Full-resolution delivery for single-image view */
+export function getFullImageUrl(url: string): string {
+  return url.replace("/upload/", `/upload/c_limit,f_auto,q_100/`);
 }
 
 function img(url: string): PortfolioImage {

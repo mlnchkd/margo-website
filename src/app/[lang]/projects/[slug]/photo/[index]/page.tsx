@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getProjectBySlug, getImageUrl, projects } from "@/lib/portfolio";
+import { getProjectBySlug, getFullImageUrl, projects } from "@/lib/portfolio";
 import styles from "./photo.module.css";
 
 type Props = {
@@ -42,7 +42,7 @@ export default async function ProjectPhotoPage({ params }: Props) {
 
       <div className={styles.imageWrap}>
         <Image
-          src={getImageUrl(currentImage.url, 1500)}
+          src={getFullImageUrl(currentImage.url)}
           alt={currentImage.caption}
           fill
           className={styles.image}

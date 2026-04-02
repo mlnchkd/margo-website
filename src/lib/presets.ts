@@ -5,8 +5,9 @@ export type PresetPair = {
 export type PresetPack = {
   slug: string;
   title: string;
-  buyUrl: string;
-  price: string;
+  priceKopecks: number;
+  priceDisplay: string;
+  fileBasename: string;
   pairCount: number;
 };
 
@@ -14,17 +15,19 @@ export const presetPacks: PresetPack[] = [
   {
     slug: "warm-editorial",
     title: "Warm Editorial",
-    buyUrl: "https://example.com/buy/warm-editorial",
-    price: "$29",
+    priceKopecks: 49900,
+    priceDisplay: "499 ₴",
+    fileBasename: "warm-editorial.zip",
     pairCount: 10,
   },
   {
     slug: "cool-film",
     title: "Cool Film",
-    buyUrl: "https://example.com/buy/cool-film",
-    price: "$24",
+    priceKopecks: 49900,
+    priceDisplay: "499 ₴",
+    fileBasename: "cool-film.zip",
     pairCount: 12,
-  }
+  },
 ];
 
 export function getPresetPackBySlug(slug: string): PresetPack | undefined {

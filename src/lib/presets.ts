@@ -6,6 +6,7 @@ export type PresetPair = {
 
 export type PresetPack = {
   slug: string;
+  imagesFolder: string;
   title: string;
   priceKopecks: number;
   priceDisplay: string;
@@ -17,6 +18,7 @@ export type PresetPack = {
 export const presetPacks: PresetPack[] = [
   {
     slug: "cool-film",
+    imagesFolder: "presets",
     title: "Cool Film Preset",
     priceKopecks: 49900,
     priceDisplay: "499 ₴",
@@ -45,11 +47,11 @@ const CLOUDINARY_BASE =
   "https://res.cloudinary.com/duodyvg1h/image/upload/f_auto,q_auto";
 
 export function getPresetPairImageUrl(
-  packSlug: string,
+  pack: PresetPack,
   pairIndex: number,
   side: "before" | "after",
 ): string {
-  return `${CLOUDINARY_BASE}/presets/${packSlug}/${pairIndex + 1}-${side}.jpg`;
+  return `${CLOUDINARY_BASE}/presets/${pack.imagesFolder}/${pairIndex + 1}-${side}.jpg`;
 }
 
 export function getPresetPairs(pack: PresetPack): PresetPair[] {

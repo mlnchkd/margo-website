@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getPresetPairImageUrl, presetPacks } from "@/lib/presets";
+import { presetPacks } from "@/lib/presets";
 import { getDictionary, hasLocale } from "../dictionaries";
 import styles from "@/app/[lang]/presets/presets-index.module.css";
 
@@ -24,11 +24,12 @@ export default async function PresetsIndexPage({ params }: Props) {
             >
               <div className={styles.imageWrap}>
                 <Image
-                  src={getPresetPairImageUrl(pack.slug, 0, "after")}
+                  src={pack.coverImage}
                   alt=""
-                  width={900}
-                  height={1100}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className={styles.image}
+                  priority
                 />
                 <div className={styles.overlay} />
               </div>

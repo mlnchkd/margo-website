@@ -10,16 +10,18 @@ export type PresetPack = {
   priceKopecks: number;
   priceDisplay: string;
   fileBasename: string;
+  coverImage: string;
   pairs: { name: string; aspectRatio: [number, number] }[];
 };
 
 export const presetPacks: PresetPack[] = [
   {
     slug: "presets",
-    title: "ONE pack presets",
+    title: "Cool Film Preset",
     priceKopecks: 49900,
     priceDisplay: "499 ₴",
-    fileBasename: "cool-film.zip",
+    fileBasename: "margophotoo-cool-film.zip",
+    coverImage: "https://picsum.photos/seed/cool-film-2/900/1100",
     pairs: [
       { name: "Bloom", aspectRatio: [4016, 6016] },
       { name: "Honeydew", aspectRatio: [3989, 5975] },

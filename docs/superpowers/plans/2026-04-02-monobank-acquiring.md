@@ -133,7 +133,7 @@ export const presetPacks: PresetPack[] = [
     title: "Cool Film",
     priceKopecks: 49900,
     priceDisplay: "499 ₴",
-    fileBasename: "cool-film.zip",
+    fileBasename: "margophotoo-cool-film.zip",
     pairCount: 12,
   },
 ];
@@ -1151,7 +1151,7 @@ Complete a full payment using a Monobank test card. After payment, confirm redir
 - [ ] **Step 10: Final commit**
 
 ```bash
-echo "test" > private/presets/cool-film.zip
+echo "test" > private/presets/margophotoo-cool-film.zip
 git add private/presets/
 git commit -m "chore: add placeholder preset files for testing"
 ```

@@ -29,8 +29,7 @@ export async function POST(req: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // amount: pack.priceKopecks,
-        amount: 100,
+        amount: pack.priceKopecks,
         ccy: 980,
         merchantPaymInfo: {
           reference: preset,

@@ -16,7 +16,7 @@ export type PresetPack = {
 
 export const presetPacks: PresetPack[] = [
   {
-    slug: "presets",
+    slug: "cool-film",
     title: "Cool Film Preset",
     priceKopecks: 49900,
     priceDisplay: "499 ₴",

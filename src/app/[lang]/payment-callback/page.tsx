@@ -1,8 +1,8 @@
 "use client";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 
-export default function PaymentCallbackPage() {
+function PaymentCallbackInner() {
   const params = useParams();
   const searchParams = useSearchParams();
 
@@ -22,4 +22,12 @@ export default function PaymentCallbackPage() {
   }, [params.lang, searchParams]);
 
   return null;
+}
+
+export default function PaymentCallbackPage() {
+  return (
+    <Suspense>
+      <PaymentCallbackInner />
+    </Suspense>
+  );
 }

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import type { PresetPack } from "@/lib/presets";
 import type { Dictionary } from "../dictionaries";
 import styles from "./checkout.module.css";
@@ -17,6 +18,27 @@ type InvoiceState =
 
 export function CheckoutClient({ lang, pack, dict }: Props) {
   const [invoice, setInvoice] = useState<InvoiceState>({ status: "loading" });
+  const router = useRouter();
+
+  useEffect(() => {
+    function listenFrame(event: MessageEvent) {
+        console.log("Received event", event);
+
+
+      let data: { message?: string; value?: string } = {};
+      try {
+        data =
+          typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+      } catch {
+        return;
+      }
+      if (data.message === "close-button") router.back();
+      if (data.message === "monopay-link" && data.value)
+        window.location.href = data.value;
+    }
+    window.addEventListener("message", listenFrame, false);
+    return () => window.removeEventListener("message", listenFrame);
+  }, [router]);
 
   useEffect(() => {
     fetch("/api/invoice/create", {
@@ -25,14 +47,16 @@ export function CheckoutClient({ lang, pack, dict }: Props) {
       body: JSON.stringify({ preset: pack.slug, lang }),
     })
       .then((res) => res.json())
-      .then((data: { pageUrl?: string; invoiceId?: string; error?: string }) => {
-        if (data.pageUrl && data.invoiceId) {
-          sessionStorage.setItem("mono_invoice_id", data.invoiceId);
-          setInvoice({ status: "ready", pageUrl: data.pageUrl });
-        } else {
-          setInvoice({ status: "error" });
-        }
-      })
+      .then(
+        (data: { pageUrl?: string; invoiceId?: string; error?: string }) => {
+          if (data.pageUrl && data.invoiceId) {
+            sessionStorage.setItem("mono_invoice_id", data.invoiceId);
+            setInvoice({ status: "ready", pageUrl: data.pageUrl });
+          } else {
+            setInvoice({ status: "error" });
+          }
+        },
+      )
       .catch(() => setInvoice({ status: "error" }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

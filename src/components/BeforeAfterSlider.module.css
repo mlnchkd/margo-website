@@ -1,6 +1,6 @@
 .container {
   position: relative;
-  aspect-ratio: 900 / 650;
+  aspect-ratio: 3 / 2;
   overflow: hidden;
   background: #f0f0f0;
   cursor: col-resize;

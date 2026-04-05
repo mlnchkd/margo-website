@@ -29,11 +29,12 @@ export async function POST(req: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        amount: pack.priceKopecks,
+        // amount: pack.priceKopecks,
+        amount: 100,
         ccy: 980,
         merchantPaymInfo: {
           reference: preset,
-          destination: `${pack.title} preset pack`,
+          destination: `MARGOPHOTOO: ${pack.title} preset pack`,
         },
         displayType: "iframe",
         successUrl,

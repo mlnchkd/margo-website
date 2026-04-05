@@ -17,7 +17,7 @@ type Props = {
 export function generateStaticParams() {
   const langs = ["en", "uk"];
   return langs.flatMap((lang) =>
-    presetPacks.map((pack) => ({ lang, slug: pack.slug }))
+    presetPacks.map((pack) => ({ lang, slug: pack.slug })),
   );
 }
 
@@ -40,7 +40,10 @@ export default async function PresetPackPage({ params }: Props) {
 
       <div className={styles.header}>
         <h1 className={styles.title}>{pack.title}</h1>
-        <Link href={`/${lang}/checkout?preset=${pack.slug}`} className={styles.buyButton}>
+        <Link
+          href={`/${lang}/checkout?preset=${pack.slug}`}
+          className={styles.buyButton}
+        >
           <span>{t.buy}</span>
           <span className={styles.buyPrice}>{pack.priceDisplay}</span>
         </Link>
@@ -50,17 +53,27 @@ export default async function PresetPackPage({ params }: Props) {
         {pairs.map((pair) => (
           <article key={pair.index} className={styles.pair}>
             <BeforeAfterSlider
-              beforeSrc={getPresetPairImageUrl(pack.slug, pair.index, "before", 900, 650)}
-              afterSrc={getPresetPairImageUrl(pack.slug, pair.index, "after", 900, 650)}
+              beforeSrc={getPresetPairImageUrl(pack.slug, pair.index, "before")}
+              afterSrc={getPresetPairImageUrl(pack.slug, pair.index, "after")}
               beforeLabel={t.before}
               afterLabel={t.after}
+              aspectRatio={pair.aspectRatio}
             />
+            <div className={styles.pairCaption}>
+              <span className={styles.pairNumber}>
+                {String(pair.index + 1).padStart(2, "0")}
+              </span>
+              <span className={styles.pairName}>{pair.name}</span>
+            </div>
           </article>
         ))}
       </div>
 
       <div className={styles.footer}>
-        <Link href={`/${lang}/checkout?preset=${pack.slug}`} className={styles.buyButton}>
+        <Link
+          href={`/${lang}/checkout?preset=${pack.slug}`}
+          className={styles.buyButton}
+        >
           <span>{t.buy}</span>
           <span className={styles.buyPrice}>{pack.priceDisplay}</span>
         </Link>

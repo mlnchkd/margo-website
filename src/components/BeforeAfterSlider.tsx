@@ -9,9 +9,16 @@ type Props = {
   afterSrc: string;
   beforeLabel: string;
   afterLabel: string;
+  aspectRatio?: [number, number];
 };
 
-export function BeforeAfterSlider({ beforeSrc, afterSrc, beforeLabel, afterLabel }: Props) {
+export function BeforeAfterSlider({
+  beforeSrc,
+  afterSrc,
+  beforeLabel,
+  afterLabel,
+  aspectRatio,
+}: Props) {
   const [position, setPosition] = useState(50);
   const [dragging, setDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -53,12 +60,29 @@ export function BeforeAfterSlider({ beforeSrc, afterSrc, beforeLabel, afterLabel
     <div
       ref={containerRef}
       className={styles.container}
-      onMouseDown={(e) => { setDragging(true); updatePosition(e.clientX); }}
-      onTouchStart={(e) => { setDragging(true); updatePosition(e.touches[0].clientX); }}
+      style={
+        aspectRatio
+          ? { aspectRatio: `${aspectRatio[0]} / ${aspectRatio[1]}` }
+          : undefined
+      }
+      onMouseDown={(e) => {
+        setDragging(true);
+        updatePosition(e.clientX);
+      }}
+      onTouchStart={(e) => {
+        setDragging(true);
+        updatePosition(e.touches[0].clientX);
+      }}
     >
       {/* After — base layer */}
       <div className={styles.layer}>
-        <Image src={afterSrc} alt={afterLabel} fill className={styles.image} draggable={false} />
+        <Image
+          src={afterSrc}
+          alt={afterLabel}
+          fill
+          className={styles.image}
+          draggable={false}
+        />
       </div>
 
       {/* Before — clipped layer */}
@@ -66,20 +90,42 @@ export function BeforeAfterSlider({ beforeSrc, afterSrc, beforeLabel, afterLabel
         className={styles.layer}
         style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
       >
-        <Image src={beforeSrc} alt={beforeLabel} fill className={styles.image} draggable={false} />
+        <Image
+          src={beforeSrc}
+          alt={beforeLabel}
+          fill
+          className={styles.image}
+          draggable={false}
+        />
       </div>
 
       {/* Labels */}
-      <span className={`${styles.label} ${styles.labelBefore}`}>{beforeLabel}</span>
-      <span className={`${styles.label} ${styles.labelAfter}`}>{afterLabel}</span>
+      <span className={`${styles.label} ${styles.labelBefore}`}>
+        {beforeLabel}
+      </span>
+      <span className={`${styles.label} ${styles.labelAfter}`}>
+        {afterLabel}
+      </span>
 
       {/* Handle */}
       <div className={styles.handle} style={{ left: `${position}%` }}>
         <div className={styles.handleLine} />
         <div className={styles.handleCircle}>
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M6 4L2 9L6 14" stroke="#111" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M12 4L16 9L12 14" stroke="#111" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path
+              d="M6 4L2 9L6 14"
+              stroke="#111"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M12 4L16 9L12 14"
+              stroke="#111"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </div>
       </div>

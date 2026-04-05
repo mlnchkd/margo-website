@@ -18,10 +18,13 @@ export default async function PresetsIndexPage({ params }: Props) {
       <ul className={styles.grid}>
         {featured.map((pack, i) => (
           <li key={pack.slug} className={styles.card}>
-            <Link href={`/${lang}/presets/${pack.slug}`} className={styles.cardLink}>
+            <Link
+              href={`/${lang}/presets/${pack.slug}`}
+              className={styles.cardLink}
+            >
               <div className={styles.imageWrap}>
                 <Image
-                  src={getPresetPairImageUrl(pack.slug, 0, "after", 900, 1100)}
+                  src={getPresetPairImageUrl(pack.slug, 0, "after")}
                   alt=""
                   width={900}
                   height={1100}

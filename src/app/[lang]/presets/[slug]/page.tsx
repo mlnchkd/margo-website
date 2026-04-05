@@ -58,6 +58,7 @@ export default async function PresetPackPage({ params }: Props) {
               beforeLabel={t.before}
               afterLabel={t.after}
               aspectRatio={pair.aspectRatio}
+              priority={pair.index < 6}
             />
             <div className={styles.pairCaption}>
               <span className={styles.pairNumber}>

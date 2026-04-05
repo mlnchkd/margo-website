@@ -10,6 +10,7 @@ type Props = {
   beforeLabel: string;
   afterLabel: string;
   aspectRatio?: [number, number];
+  priority?: boolean;
 };
 
 export function BeforeAfterSlider({
@@ -18,6 +19,7 @@ export function BeforeAfterSlider({
   beforeLabel,
   afterLabel,
   aspectRatio,
+  priority = false,
 }: Props) {
   const [position, setPosition] = useState(50);
   const [dragging, setDragging] = useState(false);
@@ -80,6 +82,8 @@ export function BeforeAfterSlider({
           src={afterSrc}
           alt={afterLabel}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw"
+          priority={priority}
           className={styles.image}
           draggable={false}
         />
@@ -94,6 +98,8 @@ export function BeforeAfterSlider({
           src={beforeSrc}
           alt={beforeLabel}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw"
+          priority={priority}
           className={styles.image}
           draggable={false}
         />

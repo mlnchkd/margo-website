@@ -17,9 +17,9 @@ export type PresetPack = {
 
 export const presetPacks: PresetPack[] = [
   {
-    slug: "cool-film",
-    imagesFolder: "presets",
-    title: "Cool Film Preset",
+    slug: "film-feel",
+    imagesFolder: "film-feel",
+    title: "FILM FEEL",
     priceKopecks: 49900,
     priceDisplay: "499 ₴",
     fileBasename: "margophotoo-cool-film.zip",
@@ -28,13 +28,13 @@ export const presetPacks: PresetPack[] = [
       { name: "Bloom", aspectRatio: [4016, 6016] },
       { name: "Honeydew", aspectRatio: [3989, 5975] },
       { name: "Sunmilk", aspectRatio: [5913, 3947] },
-      { name: "Coconut Glow", aspectRatio: [4016, 6016] },
+      { name: "Coconut Glow", aspectRatio: [1200, 1593] },
       { name: "Rosy Mist", aspectRatio: [3024, 4032] },
       { name: "Cloudberry", aspectRatio: [4016, 6016] },
       { name: "Vanilla Wave", aspectRatio: [4284, 5712] },
       { name: "Melon Dust", aspectRatio: [3917, 5867] },
-      { name: "Apricot Blur", aspectRatio: [4284, 5712] },
-      { name: "Luna Cream", aspectRatio: [3641, 5330] },
+      { name: "Apricot Blur", aspectRatio: [1200, 1600] },
+      { name: "Luna Cream", aspectRatio: [736, 1308] },
     ],
   },
 ];

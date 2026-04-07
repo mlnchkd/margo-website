@@ -1,5 +1,5 @@
 .masonry {
-  columns: 4 220px;
+  columns: 3 220px;
   column-gap: 8px;
 }
 
@@ -20,12 +20,6 @@
   height: calc(100% + 36px);
   margin-top: -18px;
   will-change: transform;
-}
-
-@media (max-width: 1200px) {
-  .masonry {
-    columns: 3 220px;
-  }
 }
 
 @media (max-width: 800px) {

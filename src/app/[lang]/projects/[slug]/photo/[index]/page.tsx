@@ -16,8 +16,8 @@ export function generateStaticParams() {
         lang,
         slug: project.slug,
         index: String(index),
-      }))
-    )
+      })),
+    ),
   );
 }
 
@@ -28,10 +28,15 @@ export default async function ProjectPhotoPage({ params }: Props) {
 
   if (!project || !Number.isInteger(rawIndex)) notFound();
 
-  const currentIndex = Math.min(Math.max(rawIndex, 0), project.images.length - 1);
+  const currentIndex = Math.min(
+    Math.max(rawIndex, 0),
+    project.images.length - 1,
+  );
   const currentImage = project.images[currentIndex];
-  const prevIndex = currentIndex === 0 ? project.images.length - 1 : currentIndex - 1;
-  const nextIndex = currentIndex === project.images.length - 1 ? 0 : currentIndex + 1;
+  const prevIndex =
+    currentIndex === 0 ? project.images.length - 1 : currentIndex - 1;
+  const nextIndex =
+    currentIndex === project.images.length - 1 ? 0 : currentIndex + 1;
   const base = `/${lang}/projects/${project.slug}`;
 
   return (
@@ -45,6 +50,7 @@ export default async function ProjectPhotoPage({ params }: Props) {
           src={getFullImageUrl(currentImage.url)}
           alt={currentImage.caption}
           fill
+          sizes="100vw"
           className={styles.image}
           priority
         />
@@ -53,9 +59,13 @@ export default async function ProjectPhotoPage({ params }: Props) {
       <div className={styles.footer}>
         <span className={styles.caption}>{currentImage.caption}</span>
         <nav className={styles.nav}>
-          <Link href={`${base}/photo/${prevIndex}`} className={styles.navLink}>← Prev</Link>
+          <Link href={`${base}/photo/${prevIndex}`} className={styles.navLink}>
+            ← Prev
+          </Link>
           <span className={styles.navDivider}>/</span>
-          <Link href={`${base}/photo/${nextIndex}`} className={styles.navLink}>Next →</Link>
+          <Link href={`${base}/photo/${nextIndex}`} className={styles.navLink}>
+            Next →
+          </Link>
         </nav>
       </div>
     </div>

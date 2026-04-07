@@ -12,6 +12,9 @@ type MasonryOverviewProps = {
 };
 
 export function MasonryOverview({ lang, images }: MasonryOverviewProps) {
+  const [shuffled] = useState(() =>
+    [...images].sort(() => Math.random() - 0.5),
+  );
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -37,7 +40,7 @@ export function MasonryOverview({ lang, images }: MasonryOverviewProps) {
 
   return (
     <section className={styles.masonry}>
-      {images.map((image, idx) => {
+      {shuffled.map((image, idx) => {
         const height = imageHeights[idx % imageHeights.length];
         const innerOffset = Math.sin(scrollY * 0.003 + idx * 0.7) * 14;
 

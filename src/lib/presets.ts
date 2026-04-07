@@ -1,5 +1,6 @@
 export type PresetPair = {
   index: number;
+  fileIndex: number;
   name: string;
   aspectRatio: [number, number];
 };
@@ -12,7 +13,7 @@ export type PresetPack = {
   priceDisplay: string;
   fileBasename: string;
   coverImage: string;
-  pairs: { name: string; aspectRatio: [number, number] }[];
+  pairs: { name: string; aspectRatio: [number, number]; fileIndex: number }[];
 };
 
 export const presetPacks: PresetPack[] = [
@@ -25,16 +26,16 @@ export const presetPacks: PresetPack[] = [
     fileBasename: "margophotoo-cool-film.zip",
     coverImage: "https://picsum.photos/seed/cool-film-2/900/1100",
     pairs: [
-      { name: "Bloom", aspectRatio: [4016, 6016] },
-      { name: "Honeydew", aspectRatio: [3989, 5975] },
-      { name: "Sunmilk", aspectRatio: [5913, 3947] },
-      { name: "Coconut Glow", aspectRatio: [1200, 1593] },
-      { name: "Rosy Mist", aspectRatio: [3024, 4032] },
-      { name: "Cloudberry", aspectRatio: [4016, 6016] },
-      { name: "Vanilla Wave", aspectRatio: [4284, 5712] },
-      { name: "Melon Dust", aspectRatio: [3917, 5867] },
-      { name: "Apricot Blur", aspectRatio: [1200, 1600] },
-      { name: "Luna Cream", aspectRatio: [736, 1308] },
+      { name: "Bloom", aspectRatio: [4016, 6016], fileIndex: 1 },
+      { name: "Honeydew", aspectRatio: [3989, 5975], fileIndex: 2 },
+      { name: "Sunmilk", aspectRatio: [5913, 3947], fileIndex: 3 },
+      { name: "Coconut Glow", aspectRatio: [1200, 1593], fileIndex: 4 },
+      { name: "Rosy Mist", aspectRatio: [3024, 4032], fileIndex: 5 },
+      { name: "Cloudberry", aspectRatio: [4016, 6016], fileIndex: 6 },
+      { name: "Vanilla Wave", aspectRatio: [4284, 5712], fileIndex: 7 },
+      { name: "Melon Dust", aspectRatio: [3917, 5867], fileIndex: 8 },
+      { name: "Apricot Blur", aspectRatio: [1200, 1600], fileIndex: 9 },
+      { name: "Luna Cream", aspectRatio: [736, 1308], fileIndex: 10 },
     ],
   },
 ];
@@ -48,15 +49,16 @@ const CLOUDINARY_BASE =
 
 export function getPresetPairImageUrl(
   pack: PresetPack,
-  pairIndex: number,
+  pair: PresetPair,
   side: "before" | "after",
 ): string {
-  return `${CLOUDINARY_BASE}/presets/${pack.imagesFolder}/${pairIndex + 1}-${side}.jpg`;
+  return `${CLOUDINARY_BASE}/presets/${pack.imagesFolder}/${pair.fileIndex}-${side}.jpg`;
 }
 
 export function getPresetPairs(pack: PresetPack): PresetPair[] {
   return pack.pairs.map((pair, index) => ({
     index,
+    fileIndex: pair.fileIndex,
     name: pair.name,
     aspectRatio: pair.aspectRatio,
   }));

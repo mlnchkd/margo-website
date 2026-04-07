@@ -17,16 +17,25 @@ export type MixedPortfolioImage = PortfolioImage & {
 
 /** Optimised delivery for thumbnails and grids */
 export function getImageUrl(url: string, width: number): string {
-  return url.replace("/upload/", `/upload/w_${width},c_limit,f_auto,q_auto:best,fl_progressive/`);
+  return url.replace(
+    "/upload/",
+    `/upload/w_${width},c_limit,f_auto,q_auto:best,fl_progressive/`,
+  );
 }
 
-/** Full-resolution delivery for single-image view */
+/** Optimised delivery for single-image view */
 export function getFullImageUrl(url: string): string {
-  return url.replace("/upload/", `/upload/c_limit,f_auto,q_100/`);
+  return url.replace(
+    "/upload/",
+    `/upload/w_2400,c_limit,f_auto,q_auto:best,fl_progressive/`,
+  );
 }
 
 function img(url: string): PortfolioImage {
-  const filename = decodeURIComponent(url.split("/").pop() ?? "").replace(/\.[^.]+$/, "");
+  const filename = decodeURIComponent(url.split("/").pop() ?? "").replace(
+    /\.[^.]+$/,
+    "",
+  );
   return { url, caption: filename };
 }
 
@@ -278,16 +287,12 @@ export function getProjectBySlug(slug: string): PortfolioProject | undefined {
 }
 
 export function getMixedOverviewImages(): MixedPortfolioImage[] {
-  const maxLength = Math.max(...projects.map((p) => p.images.length));
-  const mixed: MixedPortfolioImage[] = [];
-
-  for (let imageIndex = 0; imageIndex < maxLength; imageIndex++) {
-    for (const project of projects) {
-      const image = project.images[imageIndex];
-      if (!image) continue;
-      mixed.push({ ...image, projectSlug: project.slug, projectTitle: project.title, imageIndex });
-    }
-  }
-
-  return mixed;
+  return projects.flatMap((project) =>
+    project.images.map((image, imageIndex) => ({
+      ...image,
+      projectSlug: project.slug,
+      projectTitle: project.title,
+      imageIndex,
+    })),
+  );
 }

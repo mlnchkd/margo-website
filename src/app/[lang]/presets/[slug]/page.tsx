@@ -53,8 +53,8 @@ export default async function PresetPackPage({ params }: Props) {
         {pairs.map((pair) => (
           <article key={pair.index} className={styles.pair}>
             <BeforeAfterSlider
-              beforeSrc={getPresetPairImageUrl(pack, pair.index, "before")}
-              afterSrc={getPresetPairImageUrl(pack, pair.index, "after")}
+              beforeSrc={getPresetPairImageUrl(pack, pair, "before")}
+              afterSrc={getPresetPairImageUrl(pack, pair, "after")}
               beforeLabel={t.before}
               afterLabel={t.after}
               aspectRatio={pair.aspectRatio}
